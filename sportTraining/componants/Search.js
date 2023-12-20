@@ -1,13 +1,41 @@
 import React from "react";
-import { View, TextInput, Button, StyleSheet } from 'react-native';
+import { View, TextInput, Button, StyleSheet, Image,Text, ScrollView } from 'react-native';
+import { Card, Title, Paragraph } from 'react-native-paper';
 import { useNavigation } from '@react-navigation/native';
+
+const exercises = [
+    {
+      title: 'Squat « jump »',
+      description: 'Descendre le poids du corps sur les talons sans décoller les talons du sol. Envoyer les fessiers vers l’arrière et serrer votre sangle abdominale. Lorsque vous remontez, faites un saut de manière explosive puis atterrir en fléchissant les genoux pour un meilleur amorti.',
+      image: require('../assets/clipart4149702.png'), // Remplacez le chemin par le chemin de votre image
+    }]
+
+const ExerciseCard = ({ title, description, image }) => (
+    <Card>
+      <Card.Content>
+        <Card.Cover source={image} />
+        <Title>{title}</Title>
+        <Paragraph>{description}</Paragraph>
+      </Card.Content>
+    </Card>
+  );
+  
+  const ExercisePage = () => (
+    <View style={styles.container}>
+      <ScrollView>
+        {exercises.map((exercise, index) => (
+          <ExerciseCard key={index} {...exercise} />
+        ))}
+      </ScrollView>
+    </View>
+  );
 
 export default class Home extends React.Component {
 
     constructor(props) {
         super(props)
         this.state = {
-            activiter: 'activiter'
+            activiter: 'exercices'
         }
     }
 
@@ -16,19 +44,25 @@ export default class Home extends React.Component {
             activiter: activiter
         });
     }
-
     render() {
         return (
-            <View>
-                <TextInput
+            <View style={styles.container}>
+                {/* <TextInput
                     onChangeText={(text) => this.setActivit(text)}
                     style={styles.input}
                     value={this.state.activiter}
                 />
                 <Button
                     onPress={() => this.props.navigation.navigate('About')}
-                    title="Afficher la page About"
-                />
+                    title="recherce"
+                /> */}
+                <View style={styles.containers}>
+                <ScrollView>
+                    {exercises.map((exercise, index) => (
+                    <ExerciseCard key={index} {...exercise} />
+                    ))}
+                </ScrollView>
+                </View>
             </View>
         );
     }
@@ -41,4 +75,29 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         padding: 10,
     },
+    stretch: {
+        width: 200,
+        height: 200,
+        resizeMode: 'stretch',
+      },
+      container: {
+        padding: 20,
+        flexDirection: 'column',
+      },
+      containers: {
+        border: 'solid',
+        padding: 10,
+        flexDirection: 'column',
+        margin: 10,
+        borderWidth: 5,
+        borderTopLeftRadius: 20,
+        borderTopRightRadius: 20,
+        borderBottomLeftRadius: 20,
+        borderBottomRightRadius: 20,
+      },
+      titleText: {
+        fontSize: 20,
+        fontWeight: 'bold',
+      },
+    
 });

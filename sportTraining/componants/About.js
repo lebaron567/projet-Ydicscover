@@ -7,8 +7,9 @@ export default class About extends React.Component{
     render(){
         return(
             <View style ={style.view}>
-                <Text style ={style.title}>A propo de moi </Text>
-                <Text>je m'appele emeric j'ai 21 ans</Text>
+                <Text style ={style.title}>a  </Text>
+                <Text>SportTrainig est une aplis de sport qui propoje des exercise de sport
+                </Text>
             </View>
              
         )

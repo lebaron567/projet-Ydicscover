@@ -1,6 +1,6 @@
 import React from "react";
 import { View,Text,  StyleSheet } from 'react-native';
-import Home from './Search'
+import Home from './Home'
 
 export default class About extends React.Component{
 

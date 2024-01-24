@@ -23,7 +23,7 @@ export default function App() {
           component={Home}
           options={{title: 'accueille'}}
         />
-        <Tab.Screen name="About" component={About} options={{title: 'vv'}} />
+        <Tab.Screen name="About" component={About} options={{title: 'credit'}} />
       </Tab.Navigator>
     </NavigationContainer>
   );
